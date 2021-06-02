@@ -1,0 +1,204 @@
+# Copyright (C) 2020 Caronima Inc.
+# This file is distributed under the same license as the DBP Cloud WP Plugin package.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: "
+"deAU API Plugin Pot "
+"v1.0.0\n"
+"POT-Creation-Date: "
+"2021-01-06 21:21+0900\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Your "
+"Name <you@example.com>\n"
+"Language-Team: "
+"info@caronima.com\n"
+"Report-Msgid-Bugs-To: "
+"Translator Name "
+"<translations@example."
+"com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/"
+"plain; charset=UTF-8\n"
+"Content-Transfer-"
+"Encoding: 8bit\n"
+"Plural-Forms: "
+"nplurals=2; plural=n != "
+"1;\n"
+"X-Textdomain-Support: "
+"yesX-Generator: Poedit "
+"1.6.4\n"
+"X-Poedit-SourceCharset: "
+"UTF-8\n"
+"X-Poedit-KeywordsList: "
+"__;_e;esc_html_e;"
+"esc_html_x:1,2c;"
+"esc_html__;esc_attr_e;"
+"esc_attr_x:1,2c;"
+"esc_attr__;_ex:1,2c;"
+"_nx:4c,1,2;"
+"_nx_noop:4c,1,2;_x:1,2c;"
+"_n:1,2;_n_noop:1,2;"
+"__ngettext:1,2;"
+"__ngettext_noop:1,2;_c,"
+"_nc:4c,1,2\n"
+"X-Poedit-Basepath: ..\n"
+"Language: en_US\n"
+"X-Generator: Poedit "
+"2.4.2\n"
+"X-Poedit-"
+"SearchPath-0: .\n"
+
+#: assets/sidebar.php:9
+msgid "開発者"
+msgstr ""
+
+#: assets/sidebar.php:9
+msgid "株式会社カロニマ"
+msgstr ""
+
+#: assets/sidebar.php:11
+msgid "WebアプリのYouTube"
+msgstr ""
+
+#: assets/sidebar.php:12
+msgid ""
+"WebアプリのFacebook"
+msgstr ""
+
+#: assets/sidebar.php:13
+msgid "WebアプリのTwitter"
+msgstr ""
+
+#: assets/sidebar.php:14
+msgid "Webアプリ"
+msgstr ""
+
+#: assets/sidebar.php:15
+msgid ""
+"Webアプリの利用規約"
+msgstr ""
+
+#: assets/sidebar.php:16
+msgid ""
+"Webアプリのプライバシー"
+"ポリシー"
+msgstr ""
+
+#: assets/sidebar.php:17
+msgid "開発者のWebサイト"
+msgstr ""
+
+#: assets/sidebar.php:21
+msgid "プラグイン名"
+msgstr ""
+
+#: assets/sidebar.php:23
+msgid ""
+"プラグインバージョン"
+msgstr ""
+
+#: assets/sidebar.php:25
+msgid "Webアプリ名"
+msgstr ""
+
+#: deau-api.php:36
+#, php-format
+msgid ""
+"このプラグインは、PHP "
+"%s 以上が必要になりま"
+"す。"
+msgstr ""
+
+#: deau-api.php:69
+msgid ""
+"PHPのクラス名が競合して"
+"います。"
+msgstr ""
+
+#: function.php:91
+msgid "法人番号"
+msgstr ""
+
+#: function.php:95
+msgid "deAU Appパスワード"
+msgstr ""
+
+#: function.php:100
+msgid "法人情報"
+msgstr ""
+
+#: function.php:106
+msgid ""
+"ERROR! CODE 402: Webアプ"
+"リのAPIが停止中です。"
+msgstr ""
+
+#: function.php:162
+msgid ""
+"deAUのWebアプリでデータ"
+"の編集・確認"
+msgstr ""
+
+#: function.php:166
+msgid ""
+"ERROR! CODE 404: Webアプ"
+"リのAPIのエンドポイント"
+"が見つかりません。"
+msgstr ""
+
+#: function.php:172
+msgid "ショートコード: "
+msgstr ""
+
+#: function.php:181
+#: function.php:189
+msgid "削除"
+msgstr ""
+
+#: function.php:189
+msgid ""
+"このショートコードを削除"
+"しますか？この操作は取り"
+"消せません。"
+msgstr ""
+
+#: function.php:190
+msgid ""
+"ショートコードを作成"
+msgstr ""
+
+#: function.php:195
+msgid "法人沿革"
+msgstr ""
+
+#: function.php:196
+msgid ""
+"沿革表示ショートコード: "
+msgstr ""
+
+#: function.php:203
+msgid ""
+"ショートコードで書き出さ"
+"れたHTML及び法人沿革のス"
+"タイルは、左メニューの  "
+"外観 -> カスタマイズ -> "
+"追加 CSS にて編集できま"
+"す。(Wordpress ver.4.7以"
+"降)"
+msgstr ""
+
+#: function.php:275
+msgid ""
+"ERROR: deAU APIのショー"
+"トコードのslugの値が空か"
+"又はその値が存在しませ"
+"ん。"
+msgstr ""
+
+#: function.php:284
+msgid ""
+"ERROR: deAU APIのショー"
+"トコードのslugの値を指定"
+"してください。"
+msgstr ""

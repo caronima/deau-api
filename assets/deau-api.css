@@ -1,0 +1,194 @@
+@charset "UTF-8";
+@import url('./icomoon/style.css');
+
+#toplevel_page_deau-api .dashicons-admin-generic::before {
+  content: "\e900";
+  font-family: 'icomoon-deau_api' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#deau-api {
+  margin-right: 20px;
+}
+#deau-api a {
+  text-decoration: none;
+}
+#deau-api .ttl-myplugin {
+  font-size: 2em;
+}
+#deau-api .ttl-myplugin .icon-deau_api-logo,
+#deau-api .ttl-sub-myplugin .icon-deau_api-logo {
+  font-size: 1.15em;
+  vertical-align: text-bottom;
+  margin-right: 0.15em;
+}
+#deau-api .inner-myplugin {
+  margin-right: 24vw;
+}
+#deau-api .main-myplugin {
+  float: left;
+  width: 100%;
+  background: #fafafa;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  padding: 10px 20px 20px 20px;
+}
+#deau-api .sidebar-myplugin {
+  float: right;
+  margin-right: -24vw;
+  width: 22.9vw;
+}
+
+#deau-api .author-myplugin {
+  background: #fafafa;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+}
+#deau-api .author-myplugin i.dashicons {
+  margin-right: 0.3em;
+}
+#deau-api .sidebar-myplugin .info-myplugin,
+#deau-api .sidebar-myplugin .info-myplugin > dt,
+#deau-api .sidebar-myplugin .info-myplugin > dd {
+  box-sizing: border-box;
+}
+#deau-api .sidebar-myplugin .info-myplugin {
+  max-width: 500px;
+  background: #eee;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  margin: 20px 0;
+}
+#deau-api .sidebar-myplugin .info-myplugin > dt,
+#deau-api .sidebar-myplugin .info-myplugin > dd {
+  padding: 10px 10px 0 10px;
+  border-top: 1px solid #ccc;
+  margin: 0;
+}
+#deau-api .sidebar-myplugin .info-myplugin > dt {
+  width: 45%;
+  float: left;
+}
+#deau-api .sidebar-myplugin .info-myplugin > dd {
+  background: #fff;
+  margin-left: 45%;
+  padding-bottom: 10px;
+  border-left: 1px solid #ccc;
+}
+#deau-api .sidebar-myplugin .info-myplugin > dd:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.deau_api-error {
+  color: #dc3232;
+}
+.deau_api-setting-field {
+  display: table;
+  width: 100%;
+}
+.deau_api-setting-field dt {
+  display: table-cell;
+  vertical-align: middle;
+  width: 12em;
+  text-align: right;
+  box-sizing: border-box;
+}
+.deau_api-setting-field dd {
+  display: table-cell;
+  vertical-align: middle;
+  padding-left: 1.3em;
+  box-sizing: border-box;
+}
+.deau_api-setting-field .required::before {
+  content: "*";
+  color: #dc3232;
+  margin-right: 0.1em;
+}
+#deau_api-app_password {
+  width: 100%;
+  max-width: 500px;
+}
+
+.deau_api-corp_data {
+  display: table;
+  width: 100%;
+}
+.deau_api-corp_data dt {
+  display: table-cell;
+  vertical-align: middle;
+  width: 12em;
+  text-align: right;
+  box-sizing: border-box;
+}
+.deau_api-corp_data dd {
+  display: table-cell;
+  vertical-align: middle;
+  padding-left: 1.5em;
+  box-sizing: border-box;
+}
+
+#deau-api textarea {
+  width: 100%;
+}
+
+#deau_api-shortcodes .deau_api-shortcode-one input[type="text"] {
+  display: inline-block;
+  vertical-align: top;
+}
+#new-deau_api_shortcode {
+  display: inline-block;
+  vertical-align: top;
+  cursor: pointer;
+  margin: 2em 0;
+}
+
+.deau_api-corp_data-branch-value {
+  margin-left: 1.5em;
+}
+.deau_api-external-web_app {
+  margin: 2em 0;
+}
+.deau_api-external-web_app .button {
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+}
+.deau_api-external-web_app .dashicons {
+  margin-left: 0.3em;
+  line-height: 1.25;
+}
+
+.deau_api-key-copy {
+  cursor: copy !important;
+  position: relative;
+  color: #0071a1;
+}
+/* Tooltip */
+.deau_api-key-copy:active::after {
+  content: 'Copied!';
+  background: #555;
+  display: inline-block;
+  vertical-align: middle;
+  width: max-content;
+  line-height: 1;
+  color: #fff;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 99999;
+  left: 50%;
+  top: -2em;
+  transform: translate(-50%, 0);
+  font-size: 0.75em;
+  padding: 8px 10px 6px 10px;
+}
