@@ -7,7 +7,7 @@ msgstr ""
 "deAU API Plugin Pot "
 "v1.0.0\n"
 "POT-Creation-Date: "
-"2021-01-06 21:21+0900\n"
+"2021-06-03 22:45+0900\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Your "
 "Name <you@example.com>\n"
@@ -116,68 +116,74 @@ msgid ""
 "います。"
 msgstr ""
 
-#: function.php:91
+#: function.php:97
 msgid "法人番号"
 msgstr ""
 
-#: function.php:95
+#: function.php:101
 msgid "deAU Appパスワード"
 msgstr ""
 
-#: function.php:100
+#: function.php:106
 msgid "法人情報"
 msgstr ""
 
-#: function.php:106
+#: function.php:112
 msgid ""
 "ERROR! CODE 402: Webアプ"
 "リのAPIが停止中です。"
 msgstr ""
 
-#: function.php:162
+#: function.php:168
 msgid ""
 "deAUのWebアプリでデータ"
 "の編集・確認"
 msgstr ""
 
-#: function.php:166
+#: function.php:173
 msgid ""
 "ERROR! CODE 404: Webアプ"
 "リのAPIのエンドポイント"
 "が見つかりません。"
 msgstr ""
 
-#: function.php:172
+#: function.php:175
+msgid ""
+"法人番号を入力してくださ"
+"い。"
+msgstr ""
+
+#: function.php:182
 msgid "ショートコード: "
 msgstr ""
 
-#: function.php:181
-#: function.php:189
+#: function.php:191
+#: function.php:199
 msgid "削除"
 msgstr ""
 
-#: function.php:189
+#: function.php:199
 msgid ""
 "このショートコードを削除"
 "しますか？この操作は取り"
 "消せません。"
 msgstr ""
 
-#: function.php:190
+#: function.php:200
 msgid ""
 "ショートコードを作成"
 msgstr ""
 
-#: function.php:195
+#: function.php:205
 msgid "法人沿革"
 msgstr ""
 
-#: function.php:196
+#: function.php:206
 msgid ""
 "沿革表示ショートコード: "
 msgstr ""
 
-#: function.php:203
+#: function.php:213
 msgid ""
 "ショートコードで書き出さ"
 "れたHTML及び法人沿革のス"
@@ -188,7 +194,7 @@ msgid ""
 "降)"
 msgstr ""
 
-#: function.php:275
+#: function.php:285
 msgid ""
 "ERROR: deAU APIのショー"
 "トコードのslugの値が空か"
@@ -196,7 +202,7 @@ msgid ""
 "ん。"
 msgstr ""
 
-#: function.php:284
+#: function.php:294
 msgid ""
 "ERROR: deAU APIのショー"
 "トコードのslugの値を指定"

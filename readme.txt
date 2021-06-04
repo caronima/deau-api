@@ -1,40 +1,39 @@
 === deAU クラウド法人情報 API ===
 Contributors: caronima, takashimatsuyama
 Donate link:
-Tags: seo, scheme, json, corporate, about, design, japan
+Tags: seo, scheme, japanese, corporate, about, api
 Requires at least: 4.8
 Tested up to: 5.7
 Requires PHP: 5.4.0
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-deAU クラウド法人情報のAPIで法人データを取得。
+Get Japanese corporate data from Web API and use it on your theme.
 
 == Description ==
 
-このプラグインは、Webアプリ「deAU クラウド法人情報」のデータを取得してWordPressテーマ上で利用することができます。
-deAU クラウド法人情報は日本国内の法人情報を検索し閲覧や編集、共有、外部連携することができるWebアプリです。
-プラグインの設定画面から自社の法人番号を指定することでWebアプリのAPIから法人データを取得することができます。
+This plugin get Japanese corporate data from the API of the web app "deAU Cloud Corporate Information" and use it on your WordPress theme.
+deAU Cloud Corporation Information is a web app that provides a way to search, view, edit, share, and collaborate with other corporations in Japan.
+You can get the corporate data from the API of the web app by specifying the corporate number from the plugin settings page.
 
 == Installation ==
 
-1. deau フォルダ全体を /wp-content/plugins/ ディレクトリにアップロードします。
-2. **プラグイン** 画面 (**プラグイン > インストール済みプラグイン**) でプラグインを有効化する。
-3. WordPress 管理画面に **deAU API** メニューが現れるでしょう。
-4. **deAU API**の設定画面から**法人番号**を指定することでWebアプリのAPIから法人データを取得することができます。
-
-基本的な使い方は[プラグインのWebサイト](https://deau.app/)を参照。
+1. Upload deau-api to the `/wp-content/plugins/` directory.
+2. Activate the plugin through the **Plugins** menu in WordPress.
+3. You will find **deAU API** menu in your WordPress admin panel.
+4. You can get corporate data in Japan from the API of the web app by specifying ** Japanese corporate number ** from the setting screen of ** deAU API **.
 
 == Screenshots ==
 
-1. 設定画面
-2. ショートコードを作成
-3. ショートコードを使って会社概要を作成
-4. Webアプリ「deAU クラウド法人情報」
-5. Webアプリ「deAU クラウド法人情報」
+1. Setting screen
+2. Create a shortcode
+3. Create a corporate profile using a shortcode
+4. Web app "deAU cloud corporate information"
+5. Web app "deAU cloud corporate information"
+
+This plugin is [developed on GitHub](https://github.com/caronima/deau-api)
 
 == Changelog ==
 
-= 1.0.0 =
-初回リリース。
+See the [release notes on GitHub](https://github.com/caronima/deau-api/releases).

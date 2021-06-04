@@ -9,6 +9,7 @@ class deAU_API {
   public function __construct() {
     if ( is_admin() ){
       add_action( 'admin_enqueue_scripts', array( $this, 'register_styles' ) );
+      add_action( 'admin_enqueue_scripts', array( $this, 'jquery_check' ) );
       add_action( 'admin_enqueue_scripts', array( $this, 'register_scripts' ) );
       add_action( 'admin_menu', array( $this, 'add_menu' ) );
       add_action( 'admin_init', array( $this, 'register_settings' ) );
@@ -23,6 +24,9 @@ class deAU_API {
     wp_enqueue_style( 'deau_api-style', DEAU_API_PLUGIN_URL.'/assets/deau-api.css', array(), DEAU_API_PLUGIN_VERSION, 'all' );
   } //endfunction
 
+  public function jquery_check() {
+    wp_enqueue_script('jquery');
+  } //endfunction
 
   public function register_scripts() {
     wp_enqueue_script( 'deau_api-script', DEAU_API_PLUGIN_URL.'/assets/deau-api.js', array( 'jquery' ), DEAU_API_PLUGIN_VERSION, true );
@@ -45,7 +49,7 @@ class deAU_API {
       $result['http_code'] = wp_remote_retrieve_response_code( $response );
       $body = wp_remote_retrieve_body( $response );
       $body_array = json_decode($body, true);
-      if( $result['http_code'] == 200 and $body_array['corporation'] ) {
+      if( $result['http_code'] == 200 and isset($body_array['corporation']) ) {
         $result['body'] = $body;
         $result['body_array'] = $body_array;
         if( $update === 'update' ) {
@@ -74,6 +78,8 @@ class deAU_API {
 
   public function settings_page() {
     $deau_option = get_option('deau_api'); //deAUのオプションデータを取得
+    $deau_option_hojinbango = isset($deau_option['hojinbango']) ? sanitize_text_field( $deau_option['hojinbango'] ) : null;
+    $deau_option_app_password = isset($deau_option['app_password']) ? sanitize_text_field( $deau_option['app_password'] ) : null;
     $deau_option_shortcodes = get_option('deau_api_shortcodes'); //deAUのオプションデータを取得
     $deau_option_shortcode_history = get_option('deau_api_shortcode_history'); //deAUのオプションデータを取得
 ?>
@@ -89,27 +95,27 @@ class deAU_API {
         <div id="deau_api-setting">
           <dl class="deau_api-setting-field">
             <dt class="required"><?php _e('法人番号', DEAU_API_TEXT_DOMAIN); ?></dt>
-            <dd><input type="text" name="deau_api[hojinbango]" id="deau_api-hojinbango" value="<?php echo sanitize_text_field( $deau_option['hojinbango'] ); ?>" required pattern="^[0-9]+$"></dd>
+            <dd><input type="text" name="deau_api[hojinbango]" id="deau_api-hojinbango" value="<?php echo $deau_option_hojinbango; ?>" required pattern="^[0-9]+$"></dd>
           </dl><!-- /.deau_api-setting-field -->
           <dl class="deau_api-setting-field">
             <dt><?php _e('deAU Appパスワード', DEAU_API_TEXT_DOMAIN); ?></dt>
-            <dd><input type="text" name="deau_api[app_password]" id="deau_api-app_password" value="<?php echo sanitize_text_field( $deau_option['app_password'] ); ?>"></dd>
+            <dd><input type="text" name="deau_api[app_password]" id="deau_api-app_password" value="<?php echo $deau_option_app_password; ?>"></dd>
           </dl><!-- /.deau_api-setting-field -->
         </div><!-- /#deau_api-setting -->
         <div class="deau_api-corp_data">
           <h2 class="deau_api-corp_data-title"><?php _e('法人情報', DEAU_API_TEXT_DOMAIN); ?></h2><!-- /.deau_api-corp_data-title -->
           <?php
-    $result = $this->deau_api_remote_get( DEAU_APP_URL_WEBAPI.'/?hojinbango='.$deau_option['hojinbango'], $deau_option['app_password'], 'update' );
+    $result = $this->deau_api_remote_get( DEAU_APP_URL_WEBAPI.'/?hojinbango='.$deau_option_hojinbango, $deau_option_app_password, 'update' );
     $corp_data = $result['body_array'];
 
     if( $result['http_code'] !== 200 ) {
       echo '<p class="deau_api-error">'.__('ERROR! CODE 402: WebアプリのAPIが停止中です。', DEAU_API_TEXT_DOMAIN).'</p>';
     } else {
-      if( $corp_data['code'] ) {
+      if( isset($corp_data['code']) ) {
         if( $corp_data['code'] !== 200 ) {
           echo '<p class="deau_api-error">ERROR, CODE '.$corp_data['code'].': '.$corp_data['error'].'</p>';
         } else {
-          if( $corp_data['corporation']['基本情報'] and is_array( $corp_data['corporation']['基本情報'] ) ) {
+          if( isset( $corp_data['corporation']['基本情報'] ) and is_array( $corp_data['corporation']['基本情報'] ) ) {
             foreach( $corp_data['corporation']['基本情報'] as $metaName => $metaData ) {
               if( $metaName === '男女比率' ) {
                 $metaData = json_decode($metaData, true);
@@ -133,7 +139,7 @@ class deAU_API {
           <?php
                        } // endif
             }  // endforeach
-            if( $corp_data['corporation']['支店・営業所'] and is_array( $corp_data['corporation']['支店・営業所'] ) ) {
+            if( isset( $corp_data['corporation']['支店・営業所'] ) and is_array( $corp_data['corporation']['支店・営業所'] ) ) {
               foreach( $corp_data['corporation']['支店・営業所'] as $branch_name => $branch_data ) {
           ?>
           <dl class="deau_api-corp_data-branch">
@@ -141,7 +147,7 @@ class deAU_API {
             <dd>
               <ul>
                 <?php
-                if( $branch_data and is_array( $branch_data ) ) {
+                if( isset($branch_data) and is_array( $branch_data ) ) {
                   foreach( $branch_data as $data_name => $data ) {
                     if($data) {
                 ?>
@@ -159,11 +165,15 @@ class deAU_API {
             } // endif
           } // endif
           ?>
-          <p class="deau_api-external-web_app"><a class="button" href="<?php echo DEAU_APP_URL_CORP_SINGLE; ?>/?hojinbango=<?php echo $deau_option['hojinbango']; ?>" target="_blank"><?php _e('deAUのWebアプリでデータの編集・確認', DEAU_API_TEXT_DOMAIN); ?><span aria-hidden="true" class="dashicons dashicons-external"></span></a></p>
+          <p class="deau_api-external-web_app"><a class="button" href="<?php echo DEAU_APP_URL_CORP_SINGLE; ?>/?hojinbango=<?php echo $deau_option_hojinbango; ?>" target="_blank"><?php _e('deAUのWebアプリでデータの編集・確認', DEAU_API_TEXT_DOMAIN); ?><span aria-hidden="true" class="dashicons dashicons-external"></span></a></p>
           <?php
         } // endif
       } else {
-        echo '<p class="deau_api-error">'.__('ERROR! CODE 404: WebアプリのAPIのエンドポイントが見つかりません。', DEAU_API_TEXT_DOMAIN).'</p>';
+        if( isset($deau_option_hojinbango) ) {
+          echo '<p class="deau_api-error">'.__('ERROR! CODE 404: WebアプリのAPIのエンドポイントが見つかりません。', DEAU_API_TEXT_DOMAIN).'</p>';
+        } else {
+          echo '<p>'.__('法人番号を入力してください。', DEAU_API_TEXT_DOMAIN).'</p>';
+        } // endif
       } // endif
     } // endif
           ?>
@@ -171,7 +181,7 @@ class deAU_API {
         <div id="deau_api-shortcodes">
           <p class="deau_api-shortcodes-title"><?php _e('ショートコード: ', DEAU_API_TEXT_DOMAIN); ?><span class="deau_api-key-copy">[deau slug="XXX"]</span></p><!-- /.deau_api-shortcodes-title -->
           <?php
-    if( $deau_option_shortcodes and is_array( $deau_option_shortcodes ) ) {
+    if( isset($deau_option_shortcodes) and is_array( $deau_option_shortcodes ) ) {
       $i=0;
       foreach( $deau_option_shortcodes as $deau_shortcode ) {
           ?>
@@ -186,11 +196,11 @@ class deAU_API {
     } // endif
           ?>
         </div><!-- /#deau_api-shortcodes -->
-        <div id="new-deau_api_shortcode" data-deau_api_shortcodes-count="<?php echo $i; ?>" data-deau_api_shortcode-delete_button_text="<?php _e('削除', DEAU_API_TEXT_DOMAIN); ?>" data-deau_api_shortcode-delete_confirm="<?php _e('このショートコードを削除しますか？この操作は取り消せません。', DEAU_API_TEXT_DOMAIN); ?>">
+        <div id="new-deau_api_shortcode" data-deau_api_shortcodes-count="<?php echo isset($i) ? $i : null; ?>" data-deau_api_shortcode-delete_button_text="<?php _e('削除', DEAU_API_TEXT_DOMAIN); ?>" data-deau_api_shortcode-delete_confirm="<?php _e('このショートコードを削除しますか？この操作は取り消せません。', DEAU_API_TEXT_DOMAIN); ?>">
           <span class="button"><?php _e('ショートコードを作成', DEAU_API_TEXT_DOMAIN); ?></span>
         </div><!-- /#new-deau_api_shortcode -->
 
-        <?php if( $corp_data['corporation']['法人沿革'] and is_array( $corp_data['corporation']['法人沿革'] ) ) { ?>
+        <?php if( isset( $corp_data['corporation']['法人沿革'] ) and is_array( $corp_data['corporation']['法人沿革'] ) ) { ?>
         <div id="deau_api-shortcode-history">
           <h2 class="deau_api-shortcode-history-title"><?php _e('法人沿革', DEAU_API_TEXT_DOMAIN); ?></h2><!-- /.deau_api-shortcode-history-title -->
           <p class="deau_api-shortcode-history-explanation"><?php _e('沿革表示ショートコード: ', DEAU_API_TEXT_DOMAIN); ?><span class="deau_api-key-copy">[deau_history]</span></p><!-- /.deau_api-shortcode-history-explanation -->
@@ -231,7 +241,7 @@ class deAU_API {
     if( $atts['slug'] and $atts['content_type'] === 'html' ) {
       $slug_check = false;
       $deau_option_shortcodes = get_option('deau_api_shortcodes'); //deAUのオプションデータを取得
-      if( $deau_option_shortcodes and is_array( $deau_option_shortcodes ) ) {
+      if( isset( $deau_option_shortcodes ) and is_array( $deau_option_shortcodes ) ) {
         foreach( $deau_option_shortcodes as $deau_shortcode ) {
           if( $deau_shortcode['slug'] === $atts['slug'] ) {
             $code = $deau_shortcode['code'];
@@ -293,17 +303,19 @@ class deAU_API {
 
     if( $atts['data_type'] === 'remote' ) {
       $deau_option = get_option('deau_api'); //deAUのオプションデータを取得
-      $result = $this->deau_api_remote_get( DEAU_APP_URL_WEBAPI.'/?hojinbango='.$deau_option['hojinbango'], $deau_option['app_password'] );
+      $deau_option_hojinbango = isset($deau_option['hojinbango']) ? sanitize_text_field( $deau_option['hojinbango'] ) : null;
+      $deau_option_app_password = isset($deau_option['app_password']) ? sanitize_text_field( $deau_option['app_password'] ) : null;
+      $result = $this->deau_api_remote_get( DEAU_APP_URL_WEBAPI.'/?hojinbango='.$deau_option_hojinbango, $deau_option_app_password );
       $corp_data = $result['body_array'];
     } else {
       $corp_data = json_decode( get_option('deau_api_localhost'), true ); //ローカルホストのデータを使用
     } // endif
 
     $deau_option_shortcode_history = get_option('deau_api_shortcode_history'); //deAUのオプションデータを取得
-    if( $deau_option_shortcode_history and is_array( $deau_option_shortcode_history ) ) {
+    if( isset( $deau_option_shortcode_history ) and is_array( $deau_option_shortcode_history ) ) {
       $history_code = $deau_option_shortcode_history['header'];
       $corp_data_histories = $corp_data['corporation']['法人沿革'];
-      if( $corp_data_histories  and is_array( $corp_data_histories ) ) {
+      if( isset( $corp_data_histories ) and is_array( $corp_data_histories ) ) {
         foreach( $corp_data_histories  as $corp_history ) {
           $history_check = true;
           $history_code_body = $deau_option_shortcode_history['body'];
@@ -380,14 +392,16 @@ class deAU_API {
 
     if( $data_type === 'remote' ) {
       $deau_option = get_option('deau_api'); //deAUのオプションデータを取得
-      $result = $this->deau_api_remote_get( DEAU_APP_URL_WEBAPI.'/?hojinbango='.$deau_option['hojinbango'], $deau_option['app_password'] );
+      $deau_option_hojinbango = isset($deau_option['hojinbango']) ? sanitize_text_field( $deau_option['hojinbango'] ) : null;
+      $deau_option_app_password = isset($deau_option['app_password']) ? sanitize_text_field( $deau_option['app_password'] ) : null;
+      $result = $this->deau_api_remote_get( DEAU_APP_URL_WEBAPI.'/?hojinbango='.$deau_option_hojinbango, $deau_option_app_password );
       $corp_data = $result['body_array'];
     } else {
       $corp_data = json_decode( get_option('deau_api_localhost'), true ); //ローカルホストのデータを使用
     } // endif
 
-    $hojin = $corp_data['corporation']['基本情報'];
-    if( $hojin and is_array( $hojin ) ) {
+    $hojin = isset($corp_data['corporation']['基本情報']) ? $corp_data['corporation']['基本情報'] : null;
+    if( isset( $hojin ) and is_array( $hojin ) ) {
       foreach( $hojin as $key => $value ) {
         if( $key === '法人種別' ) {
           if( $value === '株式会社' ) {
@@ -441,30 +455,25 @@ class deAU_API {
 
     $atts = shortcode_atts(array(
       'context' => 'https://schema.org/',
-      'type' => $schema_type,
-      'name' => $schema_name,
-      'alternate_name' => $schema_alternatename,
-      'description' => $schema_description,
-      'duns' => $schema_duns,
-      'founder' => $schema_founder,
-      'founding_date' => $schema_foundingdate,
-      'logo' => $schema_logo,
-      'url' => $schema_url,
-      'address_locality' => $schema_address_locality,
-      'address_region' => $schema_address_region,
-      'address_postalcode' => $schema_address_postalcode,
-      'address_street' => $schema_address_street,
+      'type' => isset($schema_type) ? $schema_type : null,
+      'name' => isset($schema_name) ? $schema_name : null,
+      'alternate_name' => isset($schema_alternatename) ? $schema_alternatename : null,
+      'description' => isset($schema_description) ? wp_strip_all_tags($schema_description, true) : null,
+      'duns' => isset($schema_duns) ? $schema_duns : null,
+      'founder' => isset($schema_founder) ? $schema_founder : null,
+      'founding_date' => isset($schema_foundingdate) ? $schema_foundingdate : null,
+      'logo' => isset($schema_logo) ? $schema_logo : null,
+      'url' => isset($schema_url) ? $schema_url : null,
+      'address_locality' => isset($schema_address_locality) ? $schema_address_locality : null,
+      'address_region' => isset($schema_address_region) ? $schema_address_region : null,
+      'address_postalcode' => isset($schema_address_postalcode) ? $schema_address_postalcode : null,
+      'address_street' => isset($schema_address_street) ? $schema_address_street : null,
       'address_country' => 'JP',
-      'sameas_url' => '',
-      'contact_telephone' => $schema_contactpoint_telephone,
-      'contact_email' => $schema_contactpoint_email,
+      'sameas_url' => isset($schema_sameas_url) ? $schema_sameas_url : null,
+      'contact_telephone' => isset($schema_contactpoint_telephone) ? '+81 '.$schema_contactpoint_telephone : null,
+      'contact_email' => isset($schema_contactpoint_email) ? $schema_contactpoint_email : null,
       'contact_type' => 'sales',
     ),$atts);
-
-    if( $atts['sameas_url'] ) {
-      $schema_sameas_url = explode( ',', $atts['sameas_url'] );
-      $schema_sameas_url = str_replace(array(" ", "　"), "", $schema_sameas_url); //配列の各要素の中にある半角空白と全角空白を取り除く（""に置き換え）
-    } //endif
 
     $data['@context'] = $atts['context'];
     $data['@type'] = $atts['type'];
@@ -493,13 +502,14 @@ class deAU_API {
     $data['contactPoint'] = array(
       array(
         '@type' => 'ContactPoint',
-        'telephone' => '+81 '.$atts['contact_telephone'],
+        'telephone' => $atts['contact_telephone'],
         'email' => $atts['contact_email'],
         'contactType' => $atts['contact_type']
       )
     );
-    $data['sameAs'] = $schema_sameas_url;
+    $data['sameAs'] = isset($schema_sameas_url) ? $schema_sameas_url : null;
 
+    $data = array_filter($data); //配列の値が空の要素は除去
     return json_encode( $data, JSON_UNESCAPED_UNICODE );
   } //endfunction
 
