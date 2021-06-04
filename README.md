@@ -2,17 +2,19 @@
 
 This is the development repository for deAU Cloud Corporate Information API, a WordPress plugin that gets Japanese corporate data with API of deAU Cloud Corporate Information. You can also download the plugin package installation from the [WordPress.org Plugin Directory](https://wordpress.org/plugins/deau-api/).
 
-Contributors: caronima, takashimatsuyama
-Donate link:
-Tags: seo, scheme, japanese, corporate, about, api
-Requires at least: 4.8
-Tested up to: 5.7
-Requires PHP: 5.4.0
-Stable tag: 1.0.1
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Contributors: caronima, takashimatsuyama  
+Donate link:  
+Tags: seo, scheme, japanese, corporate, about, api  
+Requires at least: 4.8  
+Tested up to: 5.7  
+Requires PHP: 5.4.0  
+Stable tag: 1.0.1  
+License: GPLv2 or later  
+License URI: http://www.gnu.org/licenses/gpl-2.0.html  
+
 
 Web APIから法人データを取得してWordPressテーマで利用。
+
 
 ## Description
 

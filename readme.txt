@@ -22,7 +22,7 @@ You can get the corporate data from the API of the web app by specifying the cor
 1. Upload deau-api to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the **Plugins** menu in WordPress.
 3. You will find **deAU API** menu in your WordPress admin panel.
-4. You can get corporate data in Japan from the API of the web app by specifying ** Japanese corporate number ** from the setting screen of ** deAU API **.
+4. You can get corporate data in Japan from the API of the web app by specifying **Japanese corporate number** from the setting screen of **deAU API**.
 
 == Screenshots ==
 
@@ -31,6 +31,8 @@ You can get the corporate data from the API of the web app by specifying the cor
 3. Create a corporate profile using a shortcode
 4. Web app "deAU cloud corporate information"
 5. Web app "deAU cloud corporate information"
+
+== Discover More ==
 
 This plugin is [developed on GitHub](https://github.com/caronima/deau-api)
 
