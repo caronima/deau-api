@@ -3,7 +3,7 @@
  * Plugin Name: deAU クラウド法人情報 API
  * Plugin URI: https://deau.app/
  * Description: deAU クラウド法人情報のAPIで法人データを取得。
- * Version: 1.0.1
+ * Version: 1.0.2
  * Requires at least: 4.8
  * Requires PHP: 5.4.0
  * Author: Caronima Inc.

@@ -6,9 +6,9 @@ Contributors: caronima, takashimatsuyama
 Donate link:  
 Tags: seo, scheme, japanese, corporate, about, api  
 Requires at least: 4.8  
-Tested up to: 5.8  
+Tested up to: 6.0  
 Requires PHP: 5.4.0  
-Stable tag: 1.0.1  
+Stable tag: 1.0.2  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -30,6 +30,9 @@ deAU クラウド法人情報は日本国内の法人情報を検索し閲覧や
 4. **deAU API**の設定画面から**日本の法人番号**を指定することでWebアプリのAPIから日本国内の法人データを取得することができます。
 
 ## Changelog
+
+### 1.0.2
+Tested on WordPress 6.0.
 
 ### 1.0.1
 Fixed PHP 8.0 warning.
