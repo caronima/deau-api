@@ -1,0 +1,25 @@
+{
+  "editor.tabSize": 2, // タブによるインデントのサイズを2に設定
+  "editor.insertSpaces": true, // スペースによるインデントを使用
+  "editor.trimAutoWhitespace": true, // 余分な末尾の空白を自動的に削除
+  "editor.formatOnSave": true, // ファイル保存時にフォーマットを自動実行
+  "files.eol": "\n", // 改行コードをLFに統一
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.syntaxProfiles": {
+    "html": {
+      "filters": "html,c"
+    }
+  },
+  "emmet.preferences": {
+    "filter.commentAfter": "<!-- /[#ID][.CLASS] -->" // Emmet展開後のコメント形式をカスタマイズ
+  },
+  // 言語固有の設定
+  "[javascript]": {
+    "editor.tabSize": 2, // JavaScriptファイルにおけるタブサイズを2に設定
+    "editor.formatOnSave": true, // JavaScriptファイル保存時にフォーマットを自動実行
+  },
+  "[php]": {
+    "editor.tabSize": 4, // PHPファイルにおけるタブサイズを4に設定
+    "editor.insertSpaces": false // タブでインデント
+  }
+}

@@ -3,9 +3,9 @@ Contributors: caronima, takashimatsuyama
 Donate link:
 Tags: seo, scheme, japanese, corporate, about, api
 Requires at least: 4.8
-Tested up to: 6.0
+Tested up to: 6.6
 Requires PHP: 5.4.0
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,6 +37,9 @@ You can get the corporate data from the API of the web app by specifying the cor
 This plugin is [developed on GitHub](https://github.com/caronima/deau-api)
 
 == Changelog ==
+
+= 1.0.3 =
+Tested on WordPress 6.6 and fixed function.php.
 
 = 1.0.2 =
 Tested on WordPress 6.0.
