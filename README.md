@@ -1,6 +1,24 @@
 # deAU クラウド法人情報 API
 
-This is the development repository for deAU Cloud Corporate Information API, a WordPress plugin that gets Japanese corporate data with API of deAU Cloud Corporate Information. You can also download the plugin package installation from the [WordPress.org Plugin Directory](https://wordpress.org/plugins/deau-api/).
+> **提供終了のお知らせ(2026年9月)**
+>
+> このプラグインの提供は終了しました。プラグインが利用する deAU の API(`/web-api/json/v1/`)は停止しており、WordPress.org のプラグインディレクトリでの配布も終了しました。
+>
+> - プラグインをお使いのサイトでは、法人情報が更新されなくなります。最後に取得した時点の情報が表示され続けます(一度も取得していない場合は `[ERROR]` と表示されます)。
+> - プラグインを停止・削除する前に、投稿・固定ページ・ウィジェットから `[deau]` `[deau_history]` `[deau_seo_schema]` のショートコードを取り除いてください。残したまま停止すると、ショートコードの文字列がそのまま表示されます。削除すると、プラグインの設定と保存済みの法人情報も消えます。
+>
+> このリポジトリは、読み取り専用として残します。
+>
+> **End of service (September 2026)**
+>
+> This plugin is no longer maintained or distributed. The deAU API it depends on has been stopped, and the plugin has been closed on the WordPress.org Plugin Directory.
+>
+> - Sites using the plugin will no longer receive updated corporate data. The data last retrieved continues to be displayed (or `[ERROR]` if it was never retrieved).
+> - Before deactivating or deleting the plugin, remove the `[deau]`, `[deau_history]` and `[deau_seo_schema]` shortcodes from your posts, pages and widgets; otherwise the shortcode text will appear as-is. Deleting the plugin also deletes its settings and the saved corporate data.
+>
+> This repository is kept as a read-only archive.
+
+This is the development repository for deAU Cloud Corporate Information API, a WordPress plugin that gets Japanese corporate data with API of deAU Cloud Corporate Information. It was distributed on the [WordPress.org Plugin Directory](https://wordpress.org/plugins/deau-api/) until September 2026.
 
 Contributors: caronima, takashimatsuyama  
 Donate link:  
